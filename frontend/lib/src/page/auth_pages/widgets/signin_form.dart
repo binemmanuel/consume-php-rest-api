@@ -1,15 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:provider/provider.dart';
-import 'package:tradehouse_app/models/user.dart';
 
-import 'package:tradehouse_app/src/page/home/home_page.dart';
 import 'package:tradehouse_app/src/page/auth_pages/signup_page.dart';
-import 'package:tradehouse_app/util/show_error_snack_bar.dart';
-import 'package:tradehouse_app/util/show_success_snack_sar.dart';
 
 import '../../../../util/helper.dart';
 import '../../../../widgets/main_app_button.dart';
@@ -136,29 +129,5 @@ class _SigninFormState extends State<SigninForm> {
   }
 
   /// Submit the inputted data for login
-  void onSubmit() async {
-    final userId = userIdController.text;
-    final password = passwordController.text;
-
-    setState(() {});
-
-    if (userId.isEmpty) {
-      userIdError = 'Enter your email, user ID or phone number';
-      showErrorSnackBar(context, message: userIdError!);
-
-      return;
-    } else if (password.isEmpty) {
-      passwordErr = 'Enter your password';
-      showErrorSnackBar(context, message: passwordErr!);
-
-      return;
-    }
-
-    final user = User.fromMap({
-      'userId': userIdController.text,
-      'password': passwordController.text,
-    });
-
-    isLoading = true;
-  }
+  void onSubmit() async {}
 }

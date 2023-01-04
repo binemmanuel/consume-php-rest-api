@@ -3,7 +3,6 @@ import 'package:ionicons/ionicons.dart';
 
 import '../../../../models/user.dart';
 import '../../../../util/helper.dart';
-import '../../../../util/show_error_snack_bar.dart';
 import '../../../../widgets/main_app_button.dart';
 
 class SecureAccountForm extends StatefulWidget {
@@ -48,6 +47,8 @@ class _SecureAccountFormState extends State<SecureAccountForm> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const SizedBox(height: 20),
+
         // password field
         TextField(
           obscureText: !showPassword,
@@ -112,7 +113,7 @@ class _SecureAccountFormState extends State<SecureAccountForm> {
           ),
         ),
 
-        const SizedBox(height: 30),
+        const SizedBox(height: 40),
 
         MainAppButton(
           onTap: done,
@@ -141,9 +142,5 @@ class _SecureAccountFormState extends State<SecureAccountForm> {
     );
   }
 
-  void done() async {
-    String password = passwordController.text.trim();
-
-    widget.onComplete(User.fromMap({'password': password}));
-  }
+  void done() async {}
 }

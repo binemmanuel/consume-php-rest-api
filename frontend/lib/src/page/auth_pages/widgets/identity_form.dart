@@ -1,38 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
+import '../../../../models/user.dart';
 import '../../../../util/helper.dart';
 import '../../../../widgets/main_app_button.dart';
 import '../signin_page.dart';
 
 class IdentityForm extends StatefulWidget {
-  const IdentityForm({Key? key, required this.onComplete}) : super(key: key);
+  const IdentityForm({super.key, required this.onComplete});
 
-  final ValueSetter<Map<String, String>> onComplete;
+  final ValueSetter<User> onComplete;
 
   @override
   State<IdentityForm> createState() => _MyWidgetState();
 }
 
 class _MyWidgetState extends State<IdentityForm> {
-  late TextEditingController fullnameController;
+  late TextEditingController usernameController;
   late TextEditingController emailController;
   late TextEditingController phoneNumberController;
 
-  String? fullnameErr, emailErr, phoneNumberErr;
+  String? usernameError, emailError, phoneNumberError;
 
   @override
   void initState() {
     super.initState();
 
-    fullnameController = TextEditingController();
+    usernameController = TextEditingController();
     emailController = TextEditingController();
     phoneNumberController = TextEditingController();
   }
 
   @override
   void dispose() {
-    fullnameController.dispose();
+    usernameController.dispose();
     emailController.dispose();
     phoneNumberController.dispose();
 
@@ -41,29 +42,29 @@ class _MyWidgetState extends State<IdentityForm> {
 
   @override
   Widget build(BuildContext context) {
-    // final size = MediaQuery.of(context).size;
-
     return Column(
       children: [
+        const SizedBox(height: 20),
+
         // Full name field
         TextField(
-          controller: fullnameController,
+          controller: usernameController,
           onChanged: (value) => validateInput(
             value,
-            field: TextFieldLabel.fullname,
+            field: TextFieldLabel.username,
             onError: (value) {
-              setState(() => fullnameErr = value);
+              setState(() => usernameError = value);
             },
             onSuccess: () {
-              setState(() => fullnameErr = null);
+              setState(() => usernameError = null);
             },
           ),
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.next,
           decoration: InputDecoration(
-            label: Text(textFieldLabelNames[TextFieldLabel.fullname]),
+            label: Text(textFieldLabelNames[TextFieldLabel.username]),
             prefixIcon: const Icon(Ionicons.person_outline),
-            errorText: fullnameErr,
+            errorText: usernameError,
           ),
         ),
 
@@ -76,10 +77,10 @@ class _MyWidgetState extends State<IdentityForm> {
             value,
             field: TextFieldLabel.email,
             onError: (value) {
-              setState(() => emailErr = value);
+              setState(() => emailError = value);
             },
             onSuccess: () {
-              setState(() => emailErr = null);
+              setState(() => emailError = null);
             },
           ),
           keyboardType: TextInputType.emailAddress,
@@ -87,35 +88,11 @@ class _MyWidgetState extends State<IdentityForm> {
           decoration: InputDecoration(
             label: Text(textFieldLabelNames[TextFieldLabel.email]),
             prefixIcon: const Icon(Ionicons.mail_outline),
-            errorText: emailErr,
+            errorText: emailError,
           ),
         ),
 
-        const SizedBox(height: 10),
-
-        // Phone number field
-        TextField(
-          controller: phoneNumberController,
-          onChanged: (value) => validateInput(
-            value,
-            field: TextFieldLabel.phoneNumber,
-            onError: (error) {
-              setState(() => phoneNumberErr = error);
-            },
-            onSuccess: () {
-              setState(() => phoneNumberErr = null);
-            },
-          ),
-          keyboardType: TextInputType.phone,
-          textInputAction: TextInputAction.done,
-          decoration: InputDecoration(
-            label: Text(textFieldLabelNames[TextFieldLabel.phoneNumber]),
-            prefixIcon: const Icon(Ionicons.call_outline),
-            errorText: phoneNumberErr,
-          ),
-        ),
-
-        const SizedBox(height: 30),
+        const SizedBox(height: 40),
 
         MainAppButton(
           onTap: next,

@@ -92,8 +92,9 @@ class _SignupState extends State<Signup> {
     );
   }
 
-  void nextPage(Map<String, String> payload) async {
+  void nextPage(User payload) async {
     // Save the data
+    ///TODO: Save signup data here
 
     setState(() => currentPage += 1);
   }

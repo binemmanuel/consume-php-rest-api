@@ -14,7 +14,7 @@ class MainAppButton extends StatelessWidget {
     this.isLoading = false,
   }) : super(key: key);
 
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final String title;
   final IconData icon;
   final bool isLoading, success;
