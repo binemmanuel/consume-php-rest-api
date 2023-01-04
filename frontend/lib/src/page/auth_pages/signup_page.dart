@@ -43,12 +43,11 @@ class _SignupState extends State<Signup> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     final size = MediaQuery.of(context).size;
 
     return AuthWrapper(
       contentHeight: size.height * 0.58,
-      topBar: Column(
+      topSection: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
@@ -76,6 +75,8 @@ class _SignupState extends State<Signup> {
           ),
         ],
       ),
+
+      //
       child: IndexedStack(
         index: currentPage,
         children: [

@@ -8,12 +8,12 @@ class AuthWrapper extends StatelessWidget {
   const AuthWrapper({
     Key? key,
     required this.child,
-    this.topBar,
+    this.topSection,
     this.contentHeight,
     this.useFingerPrint = false,
   }) : super(key: key);
 
-  final Widget? topBar;
+  final Widget? topSection;
   final Widget child;
   final double? contentHeight;
   final bool useFingerPrint;
@@ -75,7 +75,7 @@ class AuthWrapper extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      topBar ?? const SizedBox.shrink(),
+                      topSection ?? const SizedBox.shrink(),
 
                       SizedBox(height: size.height * 0.02),
 

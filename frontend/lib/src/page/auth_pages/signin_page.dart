@@ -21,14 +21,13 @@ class _SigninState extends State<Signin> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     final size = MediaQuery.of(context).size;
 
     return AuthWrapper(
       contentHeight:
           size.height <= 667.0 ? size.height * 0.65 : size.height * 0.55,
       useFingerPrint: true,
-      topBar: Column(
+      topSection: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
